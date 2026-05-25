@@ -15,7 +15,6 @@ actions:
   generateFeed: true
   uploadToFtp: false
   telegramBot: false
-  discordBot: false
 
 scraper:
   enabledScrapers:
@@ -46,10 +45,3 @@ telegram:
   botLogChatId: 0
   logLevel: ERROR
   dropPendingMessages: false
-
-discord:
-  botToken: ""
-  guildId: ""
-  adminRoleId: ""
-  channelPrefix: ""
-  categoryName: "Free Games"
