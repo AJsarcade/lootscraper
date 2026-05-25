@@ -20,6 +20,10 @@ jobs:
       - name: Create output folder
         run: mkdir -p output
 
+      - name: Get default config from container
+        run: |
+          docker run --rm eikowagenknecht/lootscraper cat /app/templates/config.default.yaml || true
+
       - name: Run LootScraper via Docker
         run: |
           docker run --rm \
