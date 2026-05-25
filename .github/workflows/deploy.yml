@@ -1,0 +1,45 @@
+name: LootScraper
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+jobs:
+  scrape-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create output folder
+        run: mkdir -p output
+
+      - name: Run LootScraper via Docker
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/config.yaml:/data/config.yaml:ro \
+            -v ${{ github.workspace }}/output:/data/output \
+            eikowagenknecht/lootscraper 2>&1 || true
+
+      - name: Debug output
+        run: |
+          ls -la ${{ github.workspace }}/output/ || echo "Output folder is empty!"
+
+      - name: Create index file
+        run: |
+          echo "<html><body><a href='feed.xml'>RSS Feed</a></body></html>" > output/index.html
+
+      - name: Upload feed as Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: output/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
