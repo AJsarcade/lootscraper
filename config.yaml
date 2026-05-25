@@ -1,9 +1,12 @@
 common:
-  logLevel: "INFO"
+  databaseFile: loot.db
+  feedFilePrefix: lootscraper
+  logFile: lootscraper-%DATE%
+  logLevel: INFO
 
 browser:
-  timeout: 30000
-  headless: true
+  timeoutSeconds: 30
+  headless: false
   loadImages: false
 
 actions:
@@ -12,31 +15,41 @@ actions:
   generateFeed: true
   uploadToFtp: false
   telegramBot: false
+  discordBot: false
 
 scraper:
   enabledScrapers:
-    - EPIC
-    - STEAM
-    - AMAZON
+    - AmazonGames
+    - SteamGames
   infoSources: []
-
-telegram:
-  accessToken: ""
-  botOwnerUserId: 0
-  logLevel: "INFO"
 
 igdb:
   clientId: ""
   clientSecret: ""
 
+feed:
+  authorName: "LootScraper"
+  authorEmail: "mail@example.com"
+  authorWeb: "https://ajsarcade.github.io/lootscraper"
+  urlPrefix: "https://ajsarcade.github.io/lootscraper/"
+  urlAlternate: "https://ajsarcade.github.io/lootscraper"
+  idPrefix: "https://ajsarcade.github.io/lootscraper/"
+
 ftp:
   host: ""
   user: ""
   password: ""
-  dir: ""
 
-feed:
-  urlPrefix: "https://ajsarcade.github.io/lootscraper"
-  urlAlternate: "https://ajsarcade.github.io/lootscraper"
-  authorName: "LootScraper"
-  authorEmail: ""
+telegram:
+  accessToken: ""
+  botOwnerUserId: 0
+  botLogChatId: 0
+  logLevel: ERROR
+  dropPendingMessages: false
+
+discord:
+  botToken: ""
+  guildId: ""
+  adminRoleId: ""
+  channelPrefix: ""
+  categoryName: "Free Games"
