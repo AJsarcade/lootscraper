@@ -1,5 +1,5 @@
 common:
-  logLevel: "info"
+  logLevel: "INFO"
 
 browser:
   timeout: 30000
@@ -23,7 +23,7 @@ scraper:
 telegram:
   accessToken: ""
   botOwnerUserId: 0
-  logLevel: "info"
+  logLevel: "INFO"
 
 igdb:
   clientId: ""
