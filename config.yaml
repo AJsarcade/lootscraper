@@ -1,0 +1,42 @@
+common:
+  logLevel: "info"
+
+browser:
+  timeout: 30000
+  headless: true
+  loadImages: false
+
+actions:
+  scrapeOffers: true
+  scrapeInfo: false
+  generateFeed: true
+  uploadToFtp: false
+  telegramBot: false
+
+scraper:
+  enabledScrapers:
+    - EPIC
+    - STEAM
+    - AMAZON
+  infoSources: []
+
+telegram:
+  accessToken: ""
+  botOwnerUserId: 0
+  logLevel: "info"
+
+igdb:
+  clientId: ""
+  clientSecret: ""
+
+ftp:
+  host: ""
+  user: ""
+  password: ""
+  dir: ""
+
+feed:
+  urlPrefix: "https://ajsarcade.github.io/lootscraper"
+  urlAlternate: "https://ajsarcade.github.io/lootscraper"
+  authorName: "LootScraper"
+  authorEmail: ""
