@@ -24,7 +24,7 @@ jobs:
         run: |
           docker run --rm \
             -v ${{ github.workspace }}/config.yaml:/data/config.yaml:ro \
-            -v ${{ github.workspace }}/output:/data/output \
+            -v ${{ github.workspace }}/output:/data \
             eikowagenknecht/lootscraper 2>&1 || true
 
       - name: Debug output
